@@ -69,10 +69,12 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 					}
 					.fullCalendarLegendItem label {
 						margin: 0;
+						display: inline-block;
 					}
 					.fullCalendarLegendItem label input{
 						height: 19px;
 						margin-right: 10px;
+						margin-top: 0;
 					}
 
 					.gCalDownload {
