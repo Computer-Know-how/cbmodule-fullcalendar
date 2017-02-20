@@ -147,8 +147,8 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 												{
 													title : '#reReplace(calendarEvent.getName(), "\'", "\'", "all")#',
 													description : '#reReplace(calendarEvent.getDescription(), "\'", "\'", "all")#',
-													start : '#dateFormat(calendarEvent.getStartTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getStartTime(), "hh:mm:ss")#',
-													end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "hh:mm:ss")#',
+													start : '#dateFormat(calendarEvent.getStartTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getStartTime(), "HH:mm:ss")#',
+													end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
 													allDay : #calendarEvent.getAllDay() eq 1 ? true : false#,
 													color: '#calendar.getEventColor()#',
 													textColor: '#calendar.getEventTextColor()#',
