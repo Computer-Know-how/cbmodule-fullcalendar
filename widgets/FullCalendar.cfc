@@ -213,37 +213,39 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 						});
 					}
 				</script>
-				<fieldset class="fullCalendarLegend">
-					<legend>Show/Hide Calendars</legend>
-					<cfloop list="#arguments.calendars#" index="i">
-						<cfset calendar = calendarService.findWhere({slug: i})>
-						<cfif !isNull(calendar)>
-							<cfset eventColor = "##3a87ad">
-							<cfset eventTextColor = "##ffffff">
-
-							<cfif settings.eventColor neq "">
+				<cfif settings.showLegend>
+					<fieldset class="fullCalendarLegend">
+						<legend>Show/Hide Calendars</legend>
+						<cfloop list="#arguments.calendars#" index="i">
+							<cfset calendar = calendarService.findWhere({slug=i})>
+							<cfif !isNull(calendar)>
 								<cfset eventColor = "##3a87ad">
-							<cfelseif !isNull(calendar.getEventColor()) and calendar.getEventColor() neq "">
-								<cfset eventColor = calendar.getEventColor()>
-							</cfif>
-
-							<cfif settings.eventTextColor neq "">
 								<cfset eventTextColor = "##ffffff">
-							<cfelseif !isNull(calendar.getEventTextColor()) and calendar.getEventTextColor() neq "">
-								<cfset eventTextColor = calendar.getEventTextColor()>
-							</cfif>
 
-							<div class="fullCalendarLegendItem" style="background-color: #eventColor#; color: #eventTextColor#;">
-								<label><input type="checkbox" data-full-calendar="#calendar.getCalendarID()#" class="fCalCheckbox" checked> #calendar.getName()#</label>
-								<cfif calendar.getCalendarType() eq "google">
-									<a title="Copy Google Calendar ID" class="gCalDownload" data-color="#eventTextColor#" data-toggle="tooltip" data-click="#calendar.getGoogleCalendarID()#" style="color: #eventTextColor#">
-										<i class="fa fa-copy"></i>
-									</a>
+								<cfif settings.eventColor neq "">
+									<cfset eventColor = "##3a87ad">
+								<cfelseif !isNull(calendar.getEventColor()) and calendar.getEventColor() neq "">
+									<cfset eventColor = calendar.getEventColor()>
 								</cfif>
-							</div>
-						</cfif>
-					</cfloop>
-				</fieldset>
+
+								<cfif settings.eventTextColor neq "">
+									<cfset eventTextColor = "##ffffff">
+								<cfelseif !isNull(calendar.getEventTextColor()) and calendar.getEventTextColor() neq "">
+									<cfset eventTextColor = calendar.getEventTextColor()>
+								</cfif>
+
+								<div class="fullCalendarLegendItem" style="background-color: #eventColor#; color: #eventTextColor#;">
+									<label><input type="checkbox" data-full-calendar="#calendar.getCalendarID()#" class="fCalCheckbox" checked> #calendar.getName()#</label>
+									<cfif calendar.getCalendarType() eq "google">
+										<a title="Copy Google Calendar ID" class="gCalDownload" data-color="#eventTextColor#" data-toggle="tooltip" data-click="#calendar.getGoogleCalendarID()#" style="color: #eventTextColor#">
+											<i class="fa fa-copy"></i>
+										</a>
+									</cfif>
+								</div>
+							</cfif>
+						</cfloop>
+					</fieldset>
+				</cfif>
 			</cfoutput>
 		</cfsavecontent>
 

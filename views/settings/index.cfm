@@ -95,6 +95,11 @@
 								#html.startFieldset(legend="Other Settings")#
 
 									<label>
+										<input type="checkbox" name="showLegend" <cfif prc.settings.showLegend>checked</cfif> class="noMargin">
+										&nbsp;&nbsp;Show Legend
+									</label>
+
+									<label>
 										<input type="checkbox" name="navLinks" <cfif prc.settings.navLinks>checked</cfif> class="noMargin">
 										&nbsp;&nbsp;Go to date when clicking on date number
 									</label>

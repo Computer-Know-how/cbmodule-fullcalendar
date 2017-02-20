@@ -34,6 +34,7 @@ component {
 			dayButton = true,
 			agendaButton = true,
 			defaultView = "month",
+			showLegend = false,
 
 			navLinks = false,
 			newTab = true,

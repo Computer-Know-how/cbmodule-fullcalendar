@@ -46,6 +46,7 @@ component extends="base" {
 					"refreshButton" = structKeyExists(rc, "refreshButton") ? true : false,
 
 					"defaultView" = rc.defaultView,
+					"showLegend" = structKeyExists(rc, "showLegend") ? true : false,
 
 					"navLinks" = structKeyExists(rc, "navLinks") ? true : false,
 					"includeJquery" = structKeyExists(rc, "includeJquery") ? true : false,
