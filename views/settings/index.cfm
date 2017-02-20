@@ -95,6 +95,11 @@
 								#html.startFieldset(legend="Other Settings")#
 
 									<label>
+										<input type="checkbox" name="useTooltips" <cfif prc.settings.useTooltips>checked</cfif> class="noMargin">
+										&nbsp;&nbsp;Show event details with tooltip
+									</label>
+
+									<label>
 										<input type="checkbox" name="showLegend" <cfif prc.settings.showLegend>checked</cfif> class="noMargin">
 										&nbsp;&nbsp;Show Legend
 									</label>

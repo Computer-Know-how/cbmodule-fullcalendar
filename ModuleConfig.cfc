@@ -40,6 +40,7 @@ component {
 			newTab = true,
 
 			includeJquery = false,
+			useTooltips = true,
 			hideJqueryAlert = false,
 
 			eventColor = "",

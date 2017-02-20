@@ -49,6 +49,7 @@ component extends="base" {
 					"showLegend" = structKeyExists(rc, "showLegend") ? true : false,
 
 					"navLinks" = structKeyExists(rc, "navLinks") ? true : false,
+					"useTooltips" = structKeyExists(rc, "useTooltips") ? true : false,
 					"includeJquery" = structKeyExists(rc, "includeJquery") ? true : false,
 					"hideJqueryAlert" = structKeyExists(rc, "hideJqueryAlert") ? true : false
 				}

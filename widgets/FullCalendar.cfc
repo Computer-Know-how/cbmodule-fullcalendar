@@ -127,7 +127,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 									<cfif calendarType eq "google">
 										{
 											googleCalendarId: '#calendar.getGoogleCalendarID()#',
-											className: 'fcal-#calendar.getCalendarID()#',
+											className: 'fcal-#calendar.getCalendarID()# tooltipster-tooltip',
 											<cfif calendar.getGoogleCalendarApiKey() neq "">
 												googleCalendarApiKey: '#calendar.getGoogleCalendarApiKey()#',
 											</cfif>
@@ -161,12 +161,36 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 							eventTextColor: '#settings.eventTextColor#',
 							navLinks: #settings.navLinks ? true : false#,
 							eventClick: function(event) {
-								if (event.url) {
+								if (#settings.openGCalEvents# == true && event.url) {
 									#settings.newTab eq true ? 'window.open(event.url);' : 'window.location.href(event.url);'#
-									return false;
-								} else if (event.description) {
-									console.log(event.description);
 								}
+
+								return false;
+							},
+							eventAfterRender: function(event, element, view) {
+								var content = '';
+								content += '<h3 style="margin-top: 0;">' + event.title + '</h3>';
+								if (event.description) {
+									content += '<p style="word-wrap: break-word;"><b>Description:</b> ' + event.description + '</p>';
+								}
+								if (event.allDay) {
+									content += '<p><b>Start:</b> ' + event.start.format('MMMM Do YYYY')  + '</p>';
+									if (!event.end) end = event.start;
+									else end = event.end;
+
+									content += '<p><b>End:</b> ' + end.format('MMMM Do YYYY')  + '</p>';
+								} else {
+									content += '<p><b>Start:</b> ' + event.start.format('MMMM Do YYYY, h:mm A')  + '</p>';
+									content += '<p><b>End:</b> ' + event.end.format('MMMM Do YYYY, h:mm A')  + '</p>';
+								}
+
+								$(element).tooltipster({
+									content: content,
+									contentAsHTML: true,
+									maxWidth: 500,
+									theme: 'tooltipster-light'
+								});
+
 							},
 							eventAfterAllRender: function(view, element) {
 								$('.fCalCheckbox').each(function() {
