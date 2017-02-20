@@ -223,14 +223,18 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 								<cfset eventTextColor = "##ffffff">
 
 								<cfif settings.eventColor neq "">
-									<cfset eventColor = "##3a87ad">
-								<cfelseif !isNull(calendar.getEventColor()) and calendar.getEventColor() neq "">
+									<cfset eventColor = settings.eventColor>
+								</cfif>
+
+								<cfif !isNull(calendar.getEventColor()) and calendar.getEventColor() neq "">
 									<cfset eventColor = calendar.getEventColor()>
 								</cfif>
 
 								<cfif settings.eventTextColor neq "">
-									<cfset eventTextColor = "##ffffff">
-								<cfelseif !isNull(calendar.getEventTextColor()) and calendar.getEventTextColor() neq "">
+									<cfset eventTextColor = settings.eventTextColor>
+								</cfif>
+
+								<cfif !isNull(calendar.getEventTextColor()) and calendar.getEventTextColor() neq "">
 									<cfset eventTextColor = calendar.getEventTextColor()>
 								</cfif>
 
