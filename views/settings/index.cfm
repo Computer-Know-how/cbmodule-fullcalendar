@@ -136,6 +136,11 @@
 									<input type="text" name="googleCalendarApiKey" value="#prc.settings.googleCalendarApiKey#" class="form-control width98">
 
 									<label>
+										<input type="checkbox" name="openGCalEvents" <cfif prc.settings.openGCalEvents>checked</cfif> class="noMargin">
+										&nbsp;&nbsp;Open Google Calendar events on click
+									</label>
+
+									<label>
 										<input type="checkbox" name="newTab" <cfif prc.settings.newTab>checked</cfif> class="noMargin">
 										&nbsp;&nbsp;Open Google calendar events in new tab
 									</label>

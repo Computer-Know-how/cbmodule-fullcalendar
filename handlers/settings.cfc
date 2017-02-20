@@ -28,6 +28,7 @@ component extends="base" {
 			var incomingSettings = serializeJSON(
 				{
 					"googleCalendarApiKey" = rc.googleCalendarApiKey,
+					"openGCalEvents" = structKeyExists(rc, "openGCalEvents") ? true : false,
 					"newTab" = structKeyExists(rc, "newTab") ? true : false
 				}
 			);

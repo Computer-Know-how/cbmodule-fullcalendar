@@ -37,6 +37,7 @@ component {
 			showLegend = false,
 
 			navLinks = false,
+			openGCalEvents = false,
 			newTab = true,
 
 			includeJquery = false,
