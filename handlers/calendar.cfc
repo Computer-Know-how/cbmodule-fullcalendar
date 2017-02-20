@@ -119,10 +119,12 @@ component extends="base" {
 		param name="rc.action" default="";
 
 		if (rc.startTime neq "") {
+			rc.startTime = parseIsoDateTime(rc.startTime);
 			rc.startTime =  createODBCDateTime(rc.startTime);
 		}
 
 		if (rc.endTime neq "") {
+			rc.endTime = parseIsoDateTime(rc.endTime);
 			rc.endTime =  createODBCDateTime(rc.endTime);
 		}
 
@@ -268,4 +270,18 @@ component extends="base" {
 		event.setView("calendar/noDataSetup");
 	}
 
+	private function parseIsoDateTime(string dateTime) {
+		var date = dateTime.split("T")[1];
+		var time = dateTime.split("T")[2];
+
+		var year = date.split("-")[1];
+		var month = date.split("-")[2];
+		var day = date.split("-")[3];
+
+		var hour = time.split(":")[1];
+		var minute = time.split(":")[2];
+		var second = time.split(":")[3];
+
+		return createDateTime(year, month, day, hour, minute, second);
+	}
 }

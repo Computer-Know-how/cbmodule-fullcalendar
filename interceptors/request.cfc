@@ -5,7 +5,7 @@ www.compknowhow.com
 ********************************************************************************
 
 Author:  Mark Skelton
-Description:  Intercepts ContentBox requests to route through fullCalendar
+Description:  Intercepts events starting with fullCalendar and preprocess with ContentBox admin
 */
 component extends="contentbox-admin.interceptors.CBRequest" {
 

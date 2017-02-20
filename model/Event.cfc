@@ -17,7 +17,7 @@ component persistent="true" table="cb_calendarEvent" {
 	property name="description" notnull="false" length="500" default="";
 	property name="startTime" notnull="false" ormType="timestamp" default="";
 	property name="endTime" notnull="false" ormType="timestamp" default="";
-	property name="allDay" notnull="false" ormType="tinyint" default="";
+	property name="allDay" notnull="false" length="10" default="";
 
 	// M2O -> Calendar
 	property name="calendar" notnull="true" cfc="contentbox.modules.fullCalendar.model.Calendar" fieldtype="many-to-one" fkcolumn="FK_calendarID" lazy="true" fetch="join";

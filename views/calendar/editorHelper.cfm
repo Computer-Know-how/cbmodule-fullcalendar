@@ -13,7 +13,7 @@
 				deltaMinutes: delta.asMinutes(),
 				action: action
 			}, function(resp) {
-				if (resp === "true") {
+				if (resp == true) {
 					console.info('Event updated!');
 				} else {
 					revertFunction();

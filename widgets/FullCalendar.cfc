@@ -121,7 +121,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 							googleCalendarApiKey: '#settings.googleCalendarApiKey#',
 							eventSources: [
 								<cfloop list="#arguments.calendars#" index="i">
-									<cfset calendar = calendarService.findWhere({slug: i})>
+									<cfset calendar = calendarService.findWhere({slug=i})>
 									<cfset calendarType = !isNull(calendar) ? calendar.getCalendarType() : ''>
 
 									<cfif calendarType eq "google">
@@ -159,7 +159,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 							],
 							eventColor: '#settings.eventColor#',
 							eventTextColor: '#settings.eventTextColor#',
-							navLinks: #settings.navLinks#,
+							navLinks: #settings.navLinks ? true : false#,
 							eventClick: function(event) {
 								if (event.url) {
 									#settings.newTab eq true ? 'window.open(event.url);' : 'window.location.href(event.url);'#
