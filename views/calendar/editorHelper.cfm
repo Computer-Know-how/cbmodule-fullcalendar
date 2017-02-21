@@ -13,7 +13,7 @@
 				deltaMinutes: delta.asMinutes(),
 				action: action
 			}, function(resp) {
-				if (resp == true) {
+				if (resp === true || resp === "true") {
 					console.info('Event updated!');
 				} else {
 					revertFunction();
@@ -59,13 +59,10 @@
 					}
 					else if (action == 'edit') {
 						console.info('Event updated!');
-						currentEvent.title = eventData.title;
-						currentEvent.description = eventData.description;
-						currentEvent.start = eventData.start;
-						currentEvent.end = eventData.end;
-						currentEvent.allDay = eventData.allDay;
+						eventData.eventID = eventID;
 
-						$('##calendar').fullCalendar('updateEvent', currentEvent);
+						$('##calendar').fullCalendar('removeEvents', currentEvent._id);
+						$('##calendar').fullCalendar('renderEvent', eventData, true);
 					}
 					else {
 						console.info('Event deleted!');
@@ -264,7 +261,6 @@
 				editable: true,
 				eventColor: '',
 				navLinks: true,
-				events: [],
 				selectable: true,
 				eventClick: function(event, jsEvent, view) {
 					$('##eventTitle').val(event.title);
@@ -272,8 +268,15 @@
 
 					$('##eventStartDate').val(event.start.format('M/D/YYYY'));
 
+					if (!event.end) {
+						event.end = moment(event.start).add(2, 'h');
+					}
+
 					if (event.allDay) {
-						$('##eventEndDate').val(event.start.format('M/D/YYYY'));
+						if (event.end.minutes() == 0) {
+							event.end.subtract(1, 'd');
+						}
+						$('##eventEndDate').val(event.end.format('M/D/YYYY'));
 
 						$('##eventStartTime').val('12:00 PM');
 						$('##eventEndTime').val('1:00 PM');
@@ -350,7 +353,11 @@
 								description : '#reReplace(calendarEvent.getDescription(), "\'", "\'", "all")#',
 								eventID : '#calendarEvent.getEventID()#',
 								start : '#dateFormat(calendarEvent.getStartTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getStartTime(), "HH:mm:ss")#',
-								end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
+								<cfif calendarEvent.getAllDay() eq 1 and timeFormat(calendarEvent.getEndTime(), "HH") eq "0">
+									end : '#dateFormat(dateAdd("d", 1, calendarEvent.getEndTime()), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
+								<cfelse>
+									end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
+								</cfif>
 								allDay : #calendarEvent.getAllDay() eq 1 ? true : false#
 							},
 						</cfloop>

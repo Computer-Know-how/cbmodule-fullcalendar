@@ -229,15 +229,17 @@ component extends="base" {
 					endTime = dateAdd("n", rc.deltaMinutes, endTime);
 				}
 
-				if (action == 'move') {
+				if (rc.action eq "move") {
 					// get the current start time of the event
 					startTime = oEvent.getStartTime();
 					// add the number of minutes provided
 					startTime = dateAdd("n", rc.deltaMinutes, startTime);
-					// convert the time to a ODBC date time 
-					startTime = createODBCDateTime(startTime);
 					// set the start time and save the event
-					oEvent.setStartTime(startTime);
+					oEvent.setStartTime(createODBCDateTime(startTime));
+
+					if (oEvent.getAllDay() and !rc.allDay) {
+						endTime = dateAdd("n", 120, startTime);
+					}
 				}
 
 				if (rc.allDay) {
