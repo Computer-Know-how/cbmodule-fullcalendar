@@ -162,6 +162,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 							eventColor: '#settings.eventColor#',
 							eventTextColor: '#settings.eventTextColor#',
 							navLinks: #settings.navLinks ? true : false#,
+							nowIndicator: #settings.nowIndicator ? true : false#,
 							eventClick: function(event) {
 								if (#settings.openGCalEvents# == true && event.url) {
 									#settings.newTab eq true ? 'window.open(event.url);' : 'window.location.href(event.url);'#

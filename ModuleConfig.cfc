@@ -36,6 +36,7 @@ component {
 			defaultView = "month",
 			showLegend = false,
 
+			nowIndicator = false,
 			navLinks = false,
 			openGCalEvents = false,
 			newTab = true,

@@ -110,6 +110,11 @@
 									</label>
 
 									<label>
+										<input type="checkbox" name="nowIndicator" <cfif prc.settings.nowIndicator>checked</cfif> class="noMargin">
+										&nbsp;&nbsp;Show indicator of current time
+									</label>
+
+									<label>
 										<input type="checkbox" name="includeJquery" <cfif prc.settings.includeJquery>checked</cfif> class="noMargin">
 										&nbsp;&nbsp;Include Jquery with Full Calendar
 									</label>

@@ -48,6 +48,7 @@ component extends="base" {
 
 					"defaultView" = rc.defaultView,
 					"showLegend" = structKeyExists(rc, "showLegend") ? true : false,
+					"nowIndicator" = structKeyExists(rc, "nowIndicator") ? true : false,
 
 					"navLinks" = structKeyExists(rc, "navLinks") ? true : false,
 					"useTooltips" = structKeyExists(rc, "useTooltips") ? true : false,
