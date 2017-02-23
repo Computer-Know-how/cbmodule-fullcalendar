@@ -62,10 +62,12 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 						border-bottom-color: ##c1c0c0;
 					}
 					.fullCalendarLegendItem {
-						display: inline;
+						display: inline-block;
 						padding: 5px 10px;
 						margin-right: 15px;
 						border-radius: 3px;
+						vertical-align: middle;
+						margin-bottom: 15px;
 					}
 					.fullCalendarLegendItem label {
 						margin: 0;
@@ -86,6 +88,26 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 					}
 					.gCalDownload i {
 						vertical-align: middle;
+					}
+
+					@media (max-width: 992px) {
+						.fc-center {
+							float: none !important;
+							clear: both;
+							display: block !important;
+							margin-bottom: 15px;
+						}
+						.fc-left {
+							margin-bottom: 15px;
+						}
+					}
+					@media (max-width: 600px) {
+						.fc-left, .fc-right, .fc-center {
+							float: none !important;
+							clear: both;
+							display: block !important;
+							margin-bottom: 10px;
+						}
 					}
 				</style>
 				<div id="calendar"></div>
@@ -222,6 +244,24 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 
 							$(this).tooltip();
 						});
+
+						$(window).on('resize', function() {
+							if ($(document).width() <= 992) {
+								$('##calendar').fullCalendar('option', 'height', 'auto');
+							} else {
+								$('##calendar').fullCalendar('option', 'height', 'unset');
+								$('##calendar').fullCalendar('option', 'aspectRatio', 1.35);
+							}
+						});
+
+						$('##calendar .fc-left, ##calendar .fc-center, ##calendar .fc-right').addClass('clearfix');
+
+						if ($(document).width() <= 992) {
+							$('##calendar').fullCalendar('option', 'height', 'auto');
+						} else {
+							$('##calendar').fullCalendar('option', 'height', 'unset');
+							$('##calendar').fullCalendar('option', 'aspectRatio', 1.35);
+						}
 					}
 				</script>
 				<cfif settings.showLegend>
