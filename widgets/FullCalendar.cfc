@@ -72,7 +72,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 						display: inline-block;
 					}
 					.fullCalendarLegendItem label input{
-						height: 19px;
+						height: 15px;
 						margin-right: 10px;
 						margin-top: 0;
 					}
@@ -83,6 +83,9 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 					.gCalDownload:hover {
 						cursor: pointer;
 						text-decoration: none;
+					}
+					.gCalDownload i {
+						vertical-align: middle;
 					}
 				</style>
 				<div id="calendar"></div>
