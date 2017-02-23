@@ -74,7 +74,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 						display: inline-block;
 					}
 					.fullCalendarLegendItem label input{
-						height: 15px;
+						height: 19px;
 						margin-right: 10px;
 						margin-top: 0;
 					}
