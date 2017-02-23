@@ -82,19 +82,12 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 					}
 					.gCalDownload:hover {
 						cursor: pointer;
+						text-decoration: none;
 					}
 				</style>
 				<div id="calendar"></div>
 
 				<script>
-					function copyToClipboard(text) {
-						var temp = $("<input>");
-						$("body").append(temp);
-						temp.val(text).select();
-						document.execCommand("copy");
-						temp.remove();
-					}
-
 					onload = function() {
 						$('##calendar').fullCalendar({
 							header: {
@@ -224,18 +217,6 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 								$(this).css('color', textColor);
 							});
 
-							$(this).on('click', function() {
-								copyToClipboard('https://calendar.google.com/calendar/ical/' + calendarId + '/public/basic.ics');
-								$(this).attr('title', 'Copied!')
-								.tooltip('fixTitle')
-								.tooltip('show');
-							});
-
-							$(this).on('mouseout', function() {
-								$(this).attr('title', 'Copy Google Calendar ID')
-								.tooltip('fixTitle');
-							});
-
 							$(this).tooltip();
 						});
 					}
@@ -268,8 +249,8 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 								<div class="fullCalendarLegendItem" style="background-color: #eventColor#; color: #eventTextColor#;">
 									<label><input type="checkbox" data-full-calendar="#calendar.getCalendarID()#" class="fCalCheckbox" checked> #calendar.getName()#</label>
 									<cfif calendar.getCalendarType() eq "google">
-										<a title="Copy Google Calendar ID" class="gCalDownload" data-color="#eventTextColor#" data-toggle="tooltip" data-click="#calendar.getGoogleCalendarID()#" style="color: #eventTextColor#">
-											<i class="fa fa-copy"></i>
+										<a title="Subscribe to this Google Calendar" class="gCalDownload" data-color="#eventTextColor#" data-toggle="tooltip" href="webcal://calendar.google.com/calendar/ical/#calendar.getGoogleCalendarID()#/public/basic.ics" style="color: #eventTextColor#">
+											<i class="fa fa-rss"></i>
 										</a>
 									</cfif>
 								</div>
