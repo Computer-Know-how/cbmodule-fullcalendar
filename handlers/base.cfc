@@ -42,7 +42,7 @@ component{
 		prc.xehEvents = "fullCalendar.event.index";
 
 		//check login and redirect is needed.
-		if(!prc.oAuthor.isLoaded()){
+		if(!prc.oCurrentAuthor.isLoaded()){
 			getInstance("MessageBox@cbmessagebox").setMessage("warning","Please login!");
 			setNextEvent(prc.xehLogin);
 		}

@@ -1,7 +1,7 @@
 <cfoutput>
 	#renderView( "viewlets/assets" )#
 	<div class="row-fluid">
-		<div class="col-md-9" id="main-content">
+		<div class="col-md-9">
 			<div class="box">
 				<!--- Body --->
 				<div class="body">

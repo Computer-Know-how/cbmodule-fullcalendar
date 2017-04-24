@@ -75,7 +75,7 @@ component {
 		menuService.addSubMenu(topMenu=menuService.MODULES,
 								name="fullCalendar",
 								label="Full Calendar",
-								href="#menuService.buildModuleLink('fullCalendar','calendar')#");
+								href="fullCalendar/calendar");
 
 		// Flush the settings cache so our new settings are reflected
 		settingService.flushSettingsCache();

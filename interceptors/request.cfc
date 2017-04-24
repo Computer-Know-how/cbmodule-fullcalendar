@@ -7,12 +7,12 @@ www.compknowhow.com
 Author:  Mark Skelton
 Description:  Intercepts events starting with fullCalendar and preprocess with ContentBox admin
 */
-component extends="modules.contentbox-admin.interceptors.CBRequest" {
+component extends="modules.contentbox.modules.contentbox-admin.interceptors.CBRequest" {
 
 	function configure(){}
 
-	function preProcess( event, interceptData ) eventPattern="^fullCalendar"{
-		variables.childModulesRegex = "fullCalendar";
+	function preProcess( event, interceptData ) eventPattern="^cbmodule-fullcalendar" {
+		variables.childModulesRegex = "cbmodule-fullcalendar";
 		super.preProcess(event,interceptData);
 	}
 }
