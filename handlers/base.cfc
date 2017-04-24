@@ -28,7 +28,7 @@ component{
 			var testData = EntityLoad( "Calendar" );
 		}
 		catch( any e ) {
-			if(event.getCurrentEvent() NEQ "fullCalendar:calendar.noDataSetup") {
+			if(event.getCurrentEvent() NEQ "cbmodule-fullcalendar:calendar.noDataSetup") {
 				setNextEvent("fullCalendar.calendar.noDataSetup");
 			}
 		}
