@@ -29,7 +29,7 @@ component persistent="true" table="cb_calendar" {
 
 	// O2M -> events
 	property name="events" singularName="events" fieldtype="one-to-many" type="array" lazy="extra" batchsize="25"
-		cfc="contentbox.modules.fullCalendar.model.Event" fkcolumn="FK_calendarID" inverse="true" cascade="all-delete-orphan";
+		cfc="contentbox.modules_user.fullCalendar.model.Event" fkcolumn="FK_calendarID" inverse="true" cascade="all-delete-orphan";
 
 	// Constructor
 	function init(){

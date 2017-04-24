@@ -13,7 +13,7 @@
 				deltaMinutes: delta.asMinutes(),
 				action: action
 			}, function(resp) {
-				if (resp === true || resp === "true") {
+				if (resp === true || resp === 'true') {
 					console.info('Event updated!');
 				} else {
 					revertFunction();
@@ -59,10 +59,13 @@
 					}
 					else if (action == 'edit') {
 						console.info('Event updated!');
-						eventData.eventID = eventID;
+						currentEvent.title = eventData.title;
+						currentEvent.description = eventData.description;
+						currentEvent.start = eventData.start;
+						currentEvent.end = eventData.end;
+						currentEvent.allDay = eventData.allDay;
 
-						$('##calendar').fullCalendar('removeEvents', currentEvent._id);
-						$('##calendar').fullCalendar('renderEvent', eventData, true);
+						$('##calendar').fullCalendar('updateEvent', currentEvent);
 					}
 					else {
 						console.info('Event deleted!');
@@ -191,7 +194,7 @@
 			$('##eventStartDate').val('');
 			$('##eventEndDate').val('');
 
-			$('##allDay').attr('checked', 'checked');
+			$('##allDay').prop('checked', true);
 			$('##timeFields').css('display', 'none');
 
 			$('##eventStartTime').val('');
@@ -199,6 +202,7 @@
 		}
 
 		$(document).ready(function() {
+
 			$('input').each(function (index) {
 				$(this).keypress(function (e) {
 					if (e.keyCode == 13) e.preventDefault();
@@ -218,13 +222,7 @@
 				$(this).datepicker('update', new Date());
 			});
 
-			$('.clockpicker').clockpicker({
-				autoclose: true,
-				twelvehour: true
-			}).change(function(){
-				var value = $(this).val();
-				$(this).val(value.substring(0, value.length - 2) + ' ' + value.slice(-2));
-			});
+			
 
 			$('##allDay').on('change', function() {
 				if (this.checked) {
@@ -242,7 +240,7 @@
 				deleteEvent();
 			});
 
-			$('##eventModal').on('hidden', function () {
+			$('##eventModal').on('hidden.bs.modal', function () {
 				clearModal();
 			})
 
@@ -261,6 +259,7 @@
 				editable: true,
 				eventColor: '',
 				navLinks: true,
+				events: [],
 				selectable: true,
 				eventClick: function(event, jsEvent, view) {
 					$('##eventTitle').val(event.title);
@@ -268,26 +267,19 @@
 
 					$('##eventStartDate').val(event.start.format('M/D/YYYY'));
 
-					if (!event.end) {
-						event.end = moment(event.start).add(2, 'h');
-					}
-
 					if (event.allDay) {
-						if (event.end.minutes() == 0) {
-							event.end.subtract(1, 'd');
-						}
-						$('##eventEndDate').val(event.end.format('M/D/YYYY'));
+						$('##eventEndDate').val(event.start.format('M/D/YYYY'));
 
-						$('##eventStartTime').val('12:00 PM');
-						$('##eventEndTime').val('1:00 PM');
+						$('##eventStartTime').val('12:00');
+						$('##eventEndTime').val('13:00');
 
-						$('##allDay').attr('checked', 'checked');
+						$('##allDay').prop('checked', true);
 						$('##timeFields').css('display', 'none');
 					} else {
 						$('##eventEndDate').val(event.end.format('M/D/YYYY'));
 
-						$('##eventStartTime').val(event.start.format('h:mm A'));
-						$('##eventEndTime').val(event.end.format('h:mm A'));
+						$('##eventStartTime').val(event.start.format('HH:mm'));
+						$('##eventEndTime').val(event.end.format('HH:mm'));
 
 						$('##allDay').removeAttr('checked');
 						$('##timeFields').css('display', 'block');
@@ -310,14 +302,14 @@
 					var endDate = end.format('M/D/YYYY');
 
 					if (view.name == 'month') {
-						var startTime = '12:00 PM';
-						var endTime = '1:00 PM';
+						var startTime = '12:00';
+						var endTime = '13:00';
 
-						$('##allDay').attr('checked', 'checked');
+						$('##allDay').prop('checked', true);
 						$('##timeFields').css('display', 'none');
 					} else {
-						var startTime = start.format('h:mm A');
-						var endTime = end.format('h:mm A');
+						var startTime = start.format('HH:mm');
+						var endTime = end.format('HH:mm');
 
 						$('##allDay').removeAttr('checked');
 						$('##timeFields').css('display', 'block');
@@ -353,11 +345,7 @@
 								description : '#reReplace(calendarEvent.getDescription(), "\'", "\'", "all")#',
 								eventID : '#calendarEvent.getEventID()#',
 								start : '#dateFormat(calendarEvent.getStartTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getStartTime(), "HH:mm:ss")#',
-								<cfif calendarEvent.getAllDay() eq 1 and timeFormat(calendarEvent.getEndTime(), "HH") eq "0">
-									end : '#dateFormat(dateAdd("d", 1, calendarEvent.getEndTime()), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
-								<cfelse>
-									end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
-								</cfif>
+								end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
 								allDay : #calendarEvent.getAllDay() eq 1 ? true : false#
 							},
 						</cfloop>

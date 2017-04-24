@@ -1,15 +1,26 @@
-﻿<cfoutput>
-<script type="text/javascript">
+﻿<script type="text/javascript">
 	$(document).ready(function() {
 		// quick filter
-		$("##calendars").tablesorter();
-		$("##calendarFilter").keyup(function(){
-			$.uiTableFilter( $("##calendars"), this.value );
-		})
+		$("#calendarFilter").keyup(function(){
+			$.uiTableFilter( $("#calendars"), this.value );
+		});
+
+		$("#calendars").dataTable({
+			"paging": false,
+			"info": false,
+			"searching": false,
+			"columnDefs": [
+			{ 
+				"orderable": false, 
+				"targets": '{sorter:false}' 
+			}
+			],
+			"order": []
+		});
 	});
+
 	function removeCalendar(calendarID){
-		$("##calendarID").val( calendarID );
-		$("##calendarForm").submit();
+		$("#calendarID").val( calendarID );
+		$("#calendarForm").submit();
 	}
 </script>
-</cfoutput>

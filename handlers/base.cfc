@@ -12,7 +12,6 @@ component{
 	// dependencies
 	property name="CalendarService" inject="entityService:Calendar";
 	property name="EventService" inject="entityService:Event";
-	property name="VirtualCalendarService" inject="id:CalendarService@fullCalendar";
 	property name="settingService" inject="id:settingService@cb";
 
 	// pre handler
@@ -21,11 +20,17 @@ component{
 		var prc = event.getCollection(private=true);
 
 		// get module root
-		prc.moduleRoot = getModuleSettings("fullCalendar").mapping;
+		prc.moduleRoot = "/modules/contentbox/modules_user/fullCalendar";
 
 		// if data isn't setup, redirect user
-		if(!VirtualCalendarService.isDataSetup() && event.getCurrentEvent() NEQ "fullCalendar:calendar.noDataSetup") {
-			setNextEvent("fullCalendar.calendar.noDataSetup");
+
+		try {
+			var testData = EntityLoad( "Calendar" );
+		}
+		catch( any e ) {
+			if(event.getCurrentEvent() NEQ "fullCalendar:calendar.noDataSetup") {
+				setNextEvent("fullCalendar.calendar.noDataSetup");
+			}
 		}
 
 		// exit points
@@ -38,7 +43,7 @@ component{
 
 		//check login and redirect is needed.
 		if(!prc.oAuthor.isLoaded()){
-			getPlugin("MessageBox").setMessage("warning","Please login!");
+			getInstance("MessageBox@cbmessagebox").setMessage("warning","Please login!");
 			setNextEvent(prc.xehLogin);
 		}
 

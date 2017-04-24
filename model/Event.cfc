@@ -20,7 +20,7 @@ component persistent="true" table="cb_calendarEvent" {
 	property name="allDay" notnull="false" length="10" default="";
 
 	// M2O -> Calendar
-	property name="calendar" notnull="true" cfc="contentbox.modules.fullCalendar.model.Calendar" fieldtype="many-to-one" fkcolumn="FK_calendarID" lazy="true" fetch="join";
+	property name="calendar" notnull="true" cfc="contentbox.modules_user.fullCalendar.model.Calendar" fieldtype="many-to-one" fkcolumn="FK_calendarID" lazy="true" fetch="join";
 
 	// Constructor
 	function init(){

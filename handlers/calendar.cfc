@@ -64,12 +64,12 @@ component extends="base" {
 			// save content
 			calendarService.save( oCalendar );
 			// Message
-			getPlugin("MessageBox").info("Calendar saved!");
+			getInstance("MessageBox@cbmessagebox").info("Calendar saved!");
 			setNextEvent(event=prc.xehCalendarEditor,queryString="calendarID=#oCalendar.getCalendarID()#");
 		}
 		else{
 			flash.persistRC(exclude="event");
-			getPlugin("MessageBox").warn(messageArray=errors);
+			getInstance("MessageBox@cbmessagebox").warn(messageArray=errors);
 			setNextEvent(event=prc.xehCalendarEditor,queryString="calendarID=#oCalendar.getCalendarID()#");
 		}
 
@@ -79,13 +79,13 @@ component extends="base" {
 		var oCalendar	= calendarService.get( rc.calendarID );
 
 		if( isNull(oCalendar) ){
-			getPlugin("MessageBox").setMessage("warning","Invalid Calendar detected!");
+			getInstance("MessageBox@cbmessagebox").setMessage("warning","Invalid Calendar detected!");
 			setNextEvent( prc.xehCalendars );
 		}
 		// remove
 		calendarService.delete( oCalendar );
 		// message
-		getPlugin("MessageBox").setMessage("info","Calendar Removed!");
+		getInstance("MessageBox@cbmessagebox").setMessage("info","Calendar Removed!");
 		// redirect
 		setNextEvent(prc.xehCalendars);
 	}
@@ -229,14 +229,13 @@ component extends="base" {
 					endTime = dateAdd("n", rc.deltaMinutes, endTime);
 				}
 
-				if (rc.action eq "move") {
+				if (action == 'move') {
 					// get the current start time of the event
 					startTime = oEvent.getStartTime();
 					// add the number of minutes provided
 					startTime = dateAdd("n", rc.deltaMinutes, startTime);
 					// set the start time and save the event
 					oEvent.setStartTime(createODBCDateTime(startTime));
-
 					if (oEvent.getAllDay() and !rc.allDay) {
 						endTime = dateAdd("n", 120, startTime);
 					}

@@ -9,33 +9,33 @@
 					<h4 class="modal-title">Add/Edit Event</h4>
 				</div>
 				<div class="modal-body">
-					<div class="alert alert-error" id="alertBox" style="display: none;">
+					<div class="alert alert-danger" id="alertBox" style="display: none;">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						<span id="alertBoxText"></span>
 					</div>
 
 					<div class="form-group">
-						<label class="required">Title</label>
-						<input type="text" id="eventTitle" class="form-control width98 required">
+						<label class="required">Title:</label>
+						<input type="text" id="eventTitle" class="form-control required">
 					</div>
 
 					<div class="form-group">
-						<label>Description</label>
-						<input type="text" id="eventDescription" class="form-control width98 ">
+						<label>Description:</label>
+						<input type="text" id="eventDescription" class="form-control">
 					</div>
 
-					<div class="row-fluid">
-						<div class="span6">
+					<div class="row">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label><i class="fa fa-calendar"></i> Start Date</label>
-								<input type="text" id="eventStartDate" class="form-control date-picker width95">
+								<label><i class="fa fa-calendar"></i> Start Date:</label>
+								<input type="text" id="eventStartDate" class="form-control date-picker">
 							</div>
 						</div>
 
-						<div class="span6">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label><i class="fa fa-calendar"></i> End Date</label>
-								<input type="text" id="eventEndDate" class="form-control date-picker width95">
+								<label><i class="fa fa-calendar"></i> End Date:</label>
+								<input type="text" id="eventEndDate" class="form-control date-picker">
 							</div>
 						</div>
 					</div>
@@ -44,30 +44,30 @@
 						<div class="span12">
 							<div class="form-group">
 								<label style="margin-top: 5px; margin-bottom: 10px;">
-									<input type="checkbox" id="allDay" class="form-control" checked style="margin: 0;">
+									<input type="checkbox" id="allDay" checked style="margin: 0;">
 									&nbsp;All Day
 								</label>
 							</div>
 						</div>
 					</div>
 
-					<div class="row-fluid" id="timeFields">
-						<div class="span6">
+					<div class="row" id="timeFields">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label><i class="fa fa-clock-o"></i> Start Time</label>
-								<input type="text" id="eventStartTime" class="form-control clockpicker width95">
+								<label><i class="fa fa-clock-o"></i> Start Time:</label>
+								<input type="time" id="eventStartTime" class="form-control">
 							</div>
 						</div>
 
-						<div class="span6">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label><i class="fa fa-clock-o"></i> End Time</label>
-								<input type="text" id="eventEndTime" class="form-control clockpicker width95">
+								<label><i class="fa fa-clock-o"></i> End Time:</label>
+								<input type="time" id="eventEndTime" class="form-control">
 							</div>
 						</div>
 					</div>
 					<div class="center event-spinner">
-						<i class="icon-spinner icon-spin icon-large icon-2x"></i>
+						<i class="fa fa-spin fa-spinner fa-lg fa-2x"></i>
 						<h4 id="spinner-text">Saving Event</h4>
 					</div>
 				</div>

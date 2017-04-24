@@ -1,14 +1,16 @@
 ﻿<cfoutput>
-<!--- Info Box --->
-<div class="small_box">
-	<div class="header">
-		<i class="icon-cogs"></i> Actions
+	<div class="panel panel-primary">
+		<!--- Info Box --->
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-cogs"></i> Actions
+			</h3>
+		</div>
+		<div class="panel-body">
+			<!--- Forms --->
+			<button class="btn btn-danger" style="margin-right: 5px" onclick="return to('#event.buildLink(prc.xehCalendars)#')">Calendars</button>
+			<button class="btn btn-default" style="margin-right: 5px" onclick="return to('#event.buildLink('cbadmin.module.fullCalendar.settings.index')#')">Settings</button>
+			<button class="btn btn-default" onclick="return to('#event.buildLink('cbadmin.module.fullCalendar.help.index')#')">Help</button>
+		</div>
 	</div>
-	<div class="body" style="padding: 10px;">
-		<!--- Forms --->
-		<button class="btn btn-danger" onclick="return to('#event.buildLink(prc.xehCalendars)#')">Calendars</button>
-		<button class="btn" onclick="return to('#event.buildLink('cbadmin.module.fullCalendar.settings.index')#')" title="Set global calendar settings">Settings</button>
-		<button class="btn" onclick="return to('#event.buildLink('cbadmin.module.fullCalendar.help.index')#')" title="Helpful guides for setting up calendars">Help</button>
-	</div>
-</div>
 </cfoutput>

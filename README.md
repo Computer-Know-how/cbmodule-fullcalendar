@@ -20,3 +20,4 @@ Download code and extract it to your ContentBox modules folder in the ContentBox
 Change Log
 -----------------
 * Version 1.0 - Initial Release
+* Version 1.1 - Updated for ContentBox 3

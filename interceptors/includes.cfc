@@ -11,7 +11,7 @@ component extends="coldbox.system.Interceptor" {
 	property name="settingService" inject="id:settingService@cb";
 
 	// include the necessary css at the head of the page
-	void function cbui_beforeHeadEnd(event, struct interceptData) {
+	function cbui_beforeHeadEnd(event, struct interceptData) {
 		var css = "";
 		css &= "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />";
 		if (deserializeJSON(settingService.getSetting("fullcalendar")).useTooltips) {
@@ -22,7 +22,7 @@ component extends="coldbox.system.Interceptor" {
 	}
 
 	// include the necessary js at the end of the page
-	void function cbui_beforeBodyEnd(event, struct interceptData) {
+	function cbui_beforeBodyEnd(event, struct interceptData) {
 		var js = "";
 		var settings = deserializeJSON(settingService.getSetting("fullcalendar"));
 

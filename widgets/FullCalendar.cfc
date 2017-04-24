@@ -8,7 +8,7 @@ Author:  Mark Skelton
 Description:  A widget that executes the ContentBox Full Calendar Module to render a Full Calendar on the target page.
 --->
 
-<cfcomponent extends="contentbox.model.ui.BaseWidget" singleton>
+<cfcomponent extends="contentbox.models.ui.BaseWidget" singleton>
 	<cfproperty name="settingService" inject="id:settingService@cb">
 	<cfproperty name="CalendarService" inject="entityService:Calendar">
 	<cfproperty name="EventService" inject="entityService:Event">
@@ -19,13 +19,13 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 		<cfset super.init(controller)>
 
 		<!--- Widget Properties --->
-		<cfset setPluginName("FullCalendar")>
-		<cfset setPluginVersion("1.0")>
-		<cfset setPluginDescription("A widget that renders a full calendar")>
-		<cfset setPluginAuthor("Computer Know How")>
-		<cfset setPluginAuthorURL("http://www.compknowhow.com")>
+		<cfset setName("FullCalendar")>
+		<cfset setVersion("1.1")>
+		<cfset setDescription("A widget that renders a full calendar")>
+		<cfset setAuthor("Computer Know How")>
+		<cfset setAuthorURL("http://www.compknowhow.com")>
 		<cfset setCategory( "Misc" )>
-		<cfset setIcon( "calendar.png" )>
+		<cfset setIcon( "calendar" )>
 		<cfreturn this>
 	</cffunction>
 
@@ -89,7 +89,6 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 					.gCalDownload i {
 						vertical-align: middle;
 					}
-
 					@media (max-width: 992px) {
 						.fc-center {
 							float: none !important;
@@ -163,11 +162,11 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 										[
 											<cfloop array="#calendarEvents#" index="calendarEvent">
 												{
-													title : '#reReplace(calendarEvent.getName(), "\'", "\'", "all")#',
-													description : '#reReplace(calendarEvent.getDescription(), "\'", "\'", "all")#',
-													start : '#dateFormat(calendarEvent.getStartTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getStartTime(), "HH:mm:ss")#',
-													end : '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "HH:mm:ss")#',
-													allDay : #calendarEvent.getAllDay() eq 1 ? true : false#,
+													title: '#reReplace(calendarEvent.getName(), "\'", "\'", "all")#',
+													description: '#reReplace(calendarEvent.getDescription(), "\'", "\'", "all")#',
+													start: '#dateFormat(calendarEvent.getStartTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getStartTime(), "hh:mm:ss")#',
+													end: '#dateFormat(calendarEvent.getEndTime(), "yyyy-mm-dd")#T#timeFormat(calendarEvent.getEndTime(), "hh:mm:ss")#',
+													allDay: #calendarEvent.getAllDay() eq 1 ? true : false#,
 													color: '#calendar.getEventColor()#',
 													textColor: '#calendar.getEventTextColor()#',
 													className: 'fcal-#calendar.getCalendarID()#'
@@ -185,8 +184,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 								if (#settings.openGCalEvents# == true && event.url) {
 									#settings.newTab eq true ? 'window.open(event.url);' : 'window.location.href(event.url);'#
 								}
-
-								return false;
+									return false;
 							},
 							eventAfterRender: function(event, element, view) {
 								var content = '';
@@ -204,14 +202,12 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 									content += '<p><b>Start:</b> ' + event.start.format('MMMM Do YYYY, h:mm A')  + '</p>';
 									content += '<p><b>End:</b> ' + event.end.format('MMMM Do YYYY, h:mm A')  + '</p>';
 								}
-
 								$(element).tooltipster({
 									content: content,
 									contentAsHTML: true,
 									maxWidth: 500,
 									theme: 'tooltipster-light'
 								});
-
 							},
 							eventAfterAllRender: function(view, element) {
 								$('.fCalCheckbox').each(function() {
@@ -243,7 +239,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 							});
 
 							$(this).tooltip();
-						});
+							});
 
 						$(window).on('resize', function() {
 							if ($(document).width() <= 992) {
@@ -252,7 +248,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 								$('##calendar').fullCalendar('option', 'height', 'unset');
 								$('##calendar').fullCalendar('option', 'aspectRatio', 1.35);
 							}
-						});
+							});
 
 						$('##calendar .fc-left, ##calendar .fc-center, ##calendar .fc-right').addClass('clearfix');
 

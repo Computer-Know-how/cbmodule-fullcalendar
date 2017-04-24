@@ -80,7 +80,7 @@ component extends="base" {
 		// Flush the settings cache so our new settings are reflected
 		settingService.flushSettingsCache();
 
-		getPlugin("MessageBox").info("Settings Saved & Updated!");
+		getInstance("MessageBox@cbmessagebox").info("Settings Saved & Updated!");
 		cb.setNextModuleEvent("fullcalendar","settings");
 	}
 

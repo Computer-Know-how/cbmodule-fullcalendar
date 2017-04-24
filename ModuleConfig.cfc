@@ -62,8 +62,6 @@ component {
 			{ class="#moduleMapping#.interceptors.includes", name="includes@FullCalendar" },
 			{ class="#moduleMapping#.interceptors.request", properties={ entryPoint="cbadmin" }, name="request@fullCalendar" }
 		];
-
-		binder.map("CalendarService@fullCalendar").to("#moduleMapping#.model.CalendarService");
 	}
 
 	/**
