@@ -22,7 +22,7 @@ Description:  A widget that executes the ContentBox Full Calendar Module to rend
 		<cfset setName("FullCalendar")>
 		<cfset setVersion("1.1")>
 		<cfset setDescription("A widget that renders a full calendar")>
-		<cfset setAuthor("Computer Know How")>
+		<cfset setAuthor("Computer Know How, LLC")>
 		<cfset setAuthorURL("http://www.compknowhow.com")>
 		<cfset setCategory( "Misc" )>
 		<cfset setIcon( "calendar" )>
