@@ -1,0 +1,8 @@
+{
+	"createPackageDirectory" : false,
+	"location": "https://github.com/Computer-Know-how/cbmodule-fullcalendar/raw/master/cbmodule-fullcalendar.zip",
+	"name": "Full Calendar",
+	"slug": "cbmodule-fullcalendar",
+	"type": "contentbox-modules",
+	"version": "1.1"
+}

@@ -10,6 +10,6 @@ Description:  I handle the help events
 component extends="base" {
 
 	function index(event,rc,prc){
-		event.setView(view="help/index",module="cbmodule-fullcalendar");
+		event.setView(view="help/index",module="fullCalendar");
 	}
 }

@@ -20,7 +20,7 @@ component{
 		var prc = event.getCollection(private=true);
 
 		// get module root
-		prc.moduleRoot = event.getModuleRoot("cbmodule-fullcalendar");
+		prc.moduleRoot = event.getModuleRoot("fullCalendar");
 
 		// if data isn't setup, redirect user
 
@@ -28,7 +28,7 @@ component{
 			var testData = EntityLoad( "Calendar" );
 		}
 		catch( any e ) {
-			if(event.getCurrentEvent() NEQ "cbmodule-fullcalendar:calendar.noDataSetup") {
+			if(event.getCurrentEvent() NEQ "fullCalendar:calendar.noDataSetup") {
 				setNextEvent("fullCalendar.calendar.noDataSetup");
 			}
 		}

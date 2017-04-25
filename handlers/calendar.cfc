@@ -16,7 +16,7 @@ component extends="base" {
 		//current calendars
 		prc.calendars = calendarService.list(sortOrder="createdDate DESC",asQuery=false);
 
-		event.setView(view="calendar/index",module="cbmodule-fullcalendar");
+		event.setView(view="calendar/index",module="fullCalendar");
 	}
 
 	// calendar editor
@@ -37,7 +37,7 @@ component extends="base" {
 		prc.eventsViewlet = "";
 		if( prc.calendar.isLoaded() ){
 			var args = {calendarID=rc.calendarID};
-			prc.eventsViewlet = runEvent(event="cbmodule-fullcalendar:calendar.events",eventArguments=args);
+			prc.eventsViewlet = runEvent(event="fullCalendar:calendar.events",eventArguments=args);
 		}
 
 		// Editor
@@ -104,7 +104,7 @@ component extends="base" {
 			prc.events = [];
 		}
 
-		return renderview(view="viewlets/events",module="cbmodule-fullcalendar");
+		return renderview(view="viewlets/events",module="fullCalendar");
 	}
 
 	function saveEvent(event,rc,prc){

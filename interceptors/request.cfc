@@ -11,8 +11,8 @@ component extends="modules.contentbox.modules.contentbox-admin.interceptors.CBRe
 
 	function configure(){}
 
-	function preProcess( event, interceptData ) eventPattern="^cbmodule-fullcalendar" {
-		variables.childModulesRegex = "cbmodule-fullcalendar";
+	function preProcess( event, interceptData ) eventPattern="^fullCalendar" {
+		variables.childModulesRegex = "fullCalendar";
 		super.preProcess(event,interceptData);
 	}
 }
