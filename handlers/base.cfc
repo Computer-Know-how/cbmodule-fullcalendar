@@ -20,7 +20,7 @@ component{
 		var prc = event.getCollection(private=true);
 
 		// get module root
-		prc.moduleRoot = "/modules/contentbox/modules_user/fullCalendar";
+		prc.moduleRoot = event.getModuleRoot("cbmodule-fullcalendar");
 
 		// if data isn't setup, redirect user
 
