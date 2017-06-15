@@ -52,7 +52,6 @@ component {
 
 		// SES Routes
 		routes = [
-			{pattern="/", handler="form",action="index"},
 			// Convention Route
 			{pattern="/:handler/:action?"}
 		];

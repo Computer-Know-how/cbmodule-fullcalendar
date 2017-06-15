@@ -3,11 +3,7 @@ Full Calendar Module
 
 Author
 -----------------
-Computer Know How/Mark Skelton
-
-Summary
------------------
-A module that adds calendars to your ContentBox pages.
+Computer Know How, LLC/Mark Skelton
 
 Summary
 -----------------
